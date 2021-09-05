@@ -139,3 +139,41 @@ errors.
 [Performance benchmark]: https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696
 [quick start]: https://grpc.io/docs/languages/go/quickstart
 [go-releases]: https://golang.org/doc/devel/release.html
+
+# memo
+## install memo
+### go
+
+```sh
+wget https://golang.org/dl/go1.17.linux-amd64.tar.gz -O /tmp/go1.17.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go1.17.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+```
+
+### Protocol Buffer Compiler
+
+```sh
+# sudo yum install -y protobuf-compiler
+# protoc --version # libprotoc 2.5.0だった
+
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/protoc-3.17.3-linux-x86_64.zip -O /tmp/protoc-3.17.3-linux-x86_64.zip
+unzip /tmp/protoc-3.17.3-linux-x86_64.zip -d $HOME/.local
+export PATH="$PATH:$HOME/.local/bin"
+protoc --version
+```
+
+### go plugin
+
+```sh
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
+## 参考
+- https://grpc.io/docs/languages/go/quickstart/
+
+
+
+
